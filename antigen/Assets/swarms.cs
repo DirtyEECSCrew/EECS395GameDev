@@ -5,8 +5,10 @@ using UnityEngine;
 public class swarms : MonoBehaviour {
 
 	public GameObject target;
-	public float moveSpeed = 5;
+	public float moveAcceleration = 2;
+	public float moveSpeed = 0;
 	public float rotationSpeed =5;
+	public float moveFriction = 1;
 	private Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
@@ -17,8 +19,15 @@ public class swarms : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		var distance = (target.transform.position-transform.position).magnitude;
 		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(target.transform.position-transform.position),rotationSpeed*Time.deltaTime);
-		transform.position += transform.forward*Time.deltaTime;
+		Debug.Log(distance);
+		moveAcceleration = distance - moveFriction;
+		moveSpeed = moveSpeed + moveAcceleration *Time.deltaTime;
+		if(moveSpeed < 0){
+			moveSpeed = 0;
+		}
+		transform.position += transform.forward*Time.deltaTime* moveSpeed;
 
 	}
 }
