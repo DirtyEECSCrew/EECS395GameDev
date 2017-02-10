@@ -93,6 +93,7 @@
     <Compile Include="Assets\Steer2D\Scripts\FollowPath.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Pursue.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Seek.cs" />
+    <Compile Include="Assets\Steer2D\Scripts\Seek2.cs" />
     <Compile Include="Assets\Steer2D\Scripts\SteeringAgent.cs" />
     <Compile Include="Assets\Steer2D\Scripts\SteeringBehaviour.cs" />
   </ItemGroup>
