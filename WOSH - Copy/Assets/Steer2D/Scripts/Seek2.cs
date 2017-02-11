@@ -9,14 +9,12 @@ namespace Steer2D
 
         void Update()
         {
-            //TargetPoint = Input.mousePosition; //new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            TargetPoint = Input.mousePosition;
-            TargetPoint = Camera.main.ScreenToWorldPoint(TargetPoint);
-            //transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed)
+            var player = GetComponent<Player>().playerNumber;
+            TargetPoint = new Vector2(GameObject.Find("Player1").transform.position.x,GameObject.Find("Player1").transform.position.y);
         }
         public override Vector2 GetVelocity()
         {
-            return ((TargetPoint - (Vector2)transform.position).normalized * agent.MaxVelocity) - agent.CurrentVelocity;   
+            return ((TargetPoint - (Vector2)transform.position).normalized * agent.MaxVelocity) - agent.CurrentVelocity;
         }
     }
 }
