@@ -9,6 +9,7 @@ namespace Steer2D
         public float Mass = 10;
         public float Friction = .05f;
         public bool RotateSprite = true;
+        public float stored;
 
         [HideInInspector]
         public Vector2 CurrentVelocity;
@@ -30,6 +31,7 @@ namespace Steer2D
         void Start()
         {
             AgentList.Add(this);
+            stored = MaxVelocity;
         }
 
         void Update()
@@ -56,6 +58,15 @@ namespace Steer2D
                 float angle = Mathf.Atan2(CurrentVelocity.y, CurrentVelocity.x) * Mathf.Rad2Deg;
 
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
+            }
+
+            if (Input.GetKey(KeyCode.P))
+            {
+                MaxVelocity = test.curr_speed;
+            }
+            else
+            {
+                MaxVelocity = stored;
             }
         }
 

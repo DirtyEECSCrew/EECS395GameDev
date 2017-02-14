@@ -15,19 +15,21 @@ public class test : MonoBehaviour {
 	private bool isWrappingY = false;
     private Renderer[] renderers;
 
+    public static float curr_speed = 20f;
+
     void Start() {
         renderers = GetComponentsInChildren<Renderer>();
     }
 	 
 	void Update() {
-	     if (Input.GetKey(KeyCode.D))
+	     /*if (Input.GetKey(KeyCode.D))
 	     	transform.position += new Vector3(speed*Time.deltaTime, 0f, 0f);
 	     if (Input.GetKey(KeyCode.A))
 	     	transform.position -= new Vector3(speed*Time.deltaTime, 0f, 0f);
 	     if (Input.GetKey(KeyCode.W))
 	     	transform.position += new Vector3(0f, speed*Time.deltaTime, 0f);
 	     if (Input.GetKey(KeyCode.S))
-	     	transform.position -= new Vector3(0f, speed*Time.deltaTime, 0f);
+	     	transform.position -= new Vector3(0f, speed*Time.deltaTime, 0f);*/
 
         //horizontal = Input.GetAxis("Horizontal");
         //vertical = Input.GetAxis("Vertical");

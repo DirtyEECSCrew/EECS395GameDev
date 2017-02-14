@@ -75,8 +75,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BoidBehaviour.cs" />
-    <Compile Include="Assets\BoidController.cs" />
+    <Compile Include="Assets\Code\BoidBehaviour.cs" />
+    <Compile Include="Assets\Code\BoidController.cs" />
     <Compile Include="Assets\Code\drone behavior\DroneBehavior.cs" />
     <Compile Include="Assets\Code\drone behavior\GrabberController.cs" />
     <Compile Include="Assets\Code\drone behavior\ObjectGrabberBehavior.cs" />
@@ -84,7 +84,6 @@
     <Compile Include="Assets\Code\mouse.cs" />
     <Compile Include="Assets\Code\myBoid.cs" />
     <Compile Include="Assets\Code\swarms.cs" />
-    <Compile Include="Assets\Code\test.cs" />
     <Compile Include="Assets\Code\what.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

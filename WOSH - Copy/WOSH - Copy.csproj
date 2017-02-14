@@ -75,6 +75,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Code\Enemy.cs" />
+    <Compile Include="Assets\Code\EnemySpawner.cs" />
     <Compile Include="Assets\Code\test.cs" />
     <Compile Include="Assets\Flocking\scripts\Flocking\Alignment.cs" />
     <Compile Include="Assets\Flocking\scripts\Flocking\Boid.cs" />
@@ -91,11 +93,13 @@
     <Compile Include="Assets\Steer2D\Scripts\Flee.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Flock.cs" />
     <Compile Include="Assets\Steer2D\Scripts\FollowPath.cs" />
+    <Compile Include="Assets\Steer2D\Scripts\Player.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Pursue.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Seek.cs" />
     <Compile Include="Assets\Steer2D\Scripts\Seek2.cs" />
     <Compile Include="Assets\Steer2D\Scripts\SteeringAgent.cs" />
     <Compile Include="Assets\Steer2D\Scripts\SteeringBehaviour.cs" />
+    <Compile Include="Assets\Steer2D\Scripts\SwarmController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Flocking\Resources\dataStorage.xml" />
