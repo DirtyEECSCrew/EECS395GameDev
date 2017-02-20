@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Bounds.cs" />
      <Compile Include="Assets\Code\CompleteCameraController1.cs" />
      <Compile Include="Assets\Code\Enemy.cs" />
      <Compile Include="Assets\Code\EnemySpawner.cs" />
