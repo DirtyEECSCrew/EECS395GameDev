@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Code\Enemy.cs" />
+     <Compile Include="Assets\Code\EnemySpawner.cs" />
      <Compile Include="Assets\Code\test.cs" />
      <Compile Include="Assets\Flocking\scripts\Flocking\Alignment.cs" />
      <Compile Include="Assets\Flocking\scripts\Flocking\Boid.cs" />
@@ -56,19 +58,19 @@
      <Compile Include="Assets\Flocking\scripts\UiManager.cs" />
      <Compile Include="Assets\Flocking\scripts\XmlScripts\XmlReadWrite.cs" />
      <Compile Include="Assets\Flocking\scripts\exampleScene.cs" />
-     <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\Steer2D\Examples\Assets\Target.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Arrive.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Evade.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Flee.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Flock.cs" />
      <Compile Include="Assets\Steer2D\Scripts\FollowPath.cs" />
+     <Compile Include="Assets\Steer2D\Scripts\Player.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Pursue.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Seek.cs" />
      <Compile Include="Assets\Steer2D\Scripts\Seek2.cs" />
      <Compile Include="Assets\Steer2D\Scripts\SteeringAgent.cs" />
      <Compile Include="Assets\Steer2D\Scripts\SteeringBehaviour.cs" />
-     <Compile Include="Assets\SwarmController.cs" />
+     <Compile Include="Assets\Steer2D\Scripts\SwarmController.cs" />
      <None Include="Assets\Flocking\Resources\default.xml" />
      <None Include="Assets\Flocking\Resources\dataStorage.xml" />
  <Reference Include="UnityEngine.UI">

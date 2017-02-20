@@ -20,6 +20,8 @@ namespace Steer2d
         // Update is called once per frame
         void Update()
         {
+            var player = GetComponent<Player>().playerNumber;
+
             if (Input.GetKey(KeyCode.P))
             {
                 speed = test.curr_speed*.4f;
@@ -29,7 +31,15 @@ namespace Steer2d
                 speed = stored;
             }
             //Debug.Log(speed);
-            transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical") * speed * Time.deltaTime);
+            switch(player){
+              case 1:
+                transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical") * speed * Time.deltaTime*-1);
+                break;
+              case 2:
+                transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal2") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical2") * speed * Time.deltaTime);
+                break;
+            }
+
             //gameObject.transform.position += Input.GetAxis("Horizontal")* speed * Time.deltaTime;
             //gameObject.transform.position.y += Input.GetAxis("Vertical")* speed *Time.deltaTime;
 
@@ -37,4 +47,3 @@ namespace Steer2d
         }
     }
 }
-

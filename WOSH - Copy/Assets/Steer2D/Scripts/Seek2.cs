@@ -10,7 +10,17 @@ namespace Steer2D
         void Update()
         {
             var player = GetComponent<Player>().playerNumber;
-            TargetPoint = new Vector2(GameObject.Find("Player1").transform.position.x,GameObject.Find("Player1").transform.position.y);
+            switch(player){
+              case 1:
+                TargetPoint = new Vector2(GameObject.Find("Player1").transform.position.x,GameObject.Find("Player1").transform.position.y);
+                break;
+              case 2:
+                TargetPoint = new Vector2(GameObject.Find("Player2").transform.position.x,GameObject.Find("Player2").transform.position.y);
+                break;
+              default:
+                Debug.Log("Player Not Found");
+                break;
+            }
         }
         public override Vector2 GetVelocity()
         {
