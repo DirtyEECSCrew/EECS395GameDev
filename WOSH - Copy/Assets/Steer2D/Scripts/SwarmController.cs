@@ -22,13 +22,25 @@ namespace Steer2d
         {
             var player = GetComponent<Player>().playerNumber;
 
-            if (Input.GetKey(KeyCode.P))
-            {
-                speed = test.curr_speed*.4f;
+            if(gameObject.tag == "Player1"){
+              if (Input.GetAxis("Fire1") > 0.2f)
+              {
+                  speed = test.curr_speed*0.4f;
+
+              }
+              else
+              {
+                  speed = stored;
+              }
             }
-            else
-            {
+            if(gameObject.tag == "Player2"){
+              if(Input.GetAxis("Fire2") > 0.2f){
+                speed = test.curr_speed*0.4f;
+
+              }
+              else{
                 speed = stored;
+              }
             }
             //Debug.Log(speed);
             switch(player){

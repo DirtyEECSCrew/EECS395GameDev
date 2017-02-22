@@ -20,7 +20,6 @@ public class Combat : MonoBehaviour {
 			switch(coll.gameObject.tag){
 				case "blood cell":
 					if(this.gameObject.tag == "virus"){
-
 						health -= 5*(Vector2.Dot(this.gameObject.transform.up,coll.gameObject.transform.up)+1);
 					}
 					break;

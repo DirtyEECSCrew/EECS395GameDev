@@ -52,21 +52,31 @@ namespace Steer2D
                 CurrentVelocity = CurrentVelocity.normalized * MaxVelocity;
 
             transform.position = transform.position + (Vector3)CurrentVelocity * Time.deltaTime;
-        
+
             if (RotateSprite && CurrentVelocity.magnitude > 0.0001f)
             {
                 float angle = Mathf.Atan2(CurrentVelocity.y, CurrentVelocity.x) * Mathf.Rad2Deg;
 
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
             }
-
-            if (Input.GetKey(KeyCode.P))
-            {
-                MaxVelocity = test.curr_speed;
+            if(gameObject.tag == "blood cell"){
+              if (Input.GetAxis("Fire1") > 0.2f)
+              {
+                  MaxVelocity = test.curr_speed;
+              }
+              else
+              {
+                  MaxVelocity = stored;
+              }
             }
-            else
-            {
+            if(gameObject.tag == "virus"){
+              if(Input.GetAxis("Fire2") > 0.2f){
+                MaxVelocity = test.curr_speed;
+
+              }
+              else{
                 MaxVelocity = stored;
+              }
             }
         }
 

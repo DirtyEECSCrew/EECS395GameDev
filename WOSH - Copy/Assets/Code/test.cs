@@ -20,7 +20,7 @@ public class test : MonoBehaviour {
     void Start() {
         renderers = GetComponentsInChildren<Renderer>();
     }
-	 
+
 	void Update() {
 	     /*if (Input.GetKey(KeyCode.D))
 	     	transform.position += new Vector3(speed*Time.deltaTime, 0f, 0f);
@@ -37,8 +37,8 @@ public class test : MonoBehaviour {
         //rigidbody2D.angularVelocity = -horizontal * RotationSpeed;
         //rigidbody2D.AddForce(transform.up * vertical * ThrustForce);
 
-        ScreenWrap();
-	     	
+        //ScreenWrap();
+
 	    }
 
 
@@ -60,35 +60,35 @@ public class test : MonoBehaviour {
     void ScreenWrap()
 	{
 	    var isVisible = CheckRenderers();
-	 
+
 	    if(isVisible)
 	    {
 	        isWrappingX = false;
 	        isWrappingY = false;
 	        return;
 	    }
-	 
+
 	    if(isWrappingX && isWrappingY) {
 	        return;
 	    }
-	 
+
 	    /*var cam = Camera.main;
 	    var viewportPosition = cam.WorldToViewportPoint(transform.position);*/
 
 	    Vector3 newPosition = transform.position;
-	 
+
 	    if (!isWrappingX && (newPosition.x > 1 || newPosition.x < 0))//viewportPosition
 	    {
 	        newPosition.x = -newPosition.x;
 	        isWrappingX = true;
 	    }
-	 
+
 	    if (!isWrappingY && (newPosition.y > 1 || newPosition.y < 0))
 	    {
 	        newPosition.y = -newPosition.y;
 	        isWrappingY = true;
 	    }
-	 
+
 	    transform.position = newPosition;
 	}
 }
