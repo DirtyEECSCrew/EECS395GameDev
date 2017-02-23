@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour {
 	public float health;
+
 	// Use this for initialization
+
 	void Start () {
 
 	}
@@ -17,21 +19,34 @@ public class Combat : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 
-			switch(coll.gameObject.tag){
-				case "blood cell":
-					if(this.gameObject.tag == "virus"){
-						health -= 5*(Vector2.Dot(this.gameObject.transform.up,coll.gameObject.transform.up)+1);
-					}
-					break;
-				case "virus":
-					if(this.gameObject.tag == "blood cell"){
-						health -= 5*(Vector2.Dot(this.gameObject.transform.up,coll.gameObject.transform.up)+1);
-					}
-					break;
-			}
+        if(gameObject.tag != coll.gameObject.tag && coll.gameObject.tag != "wall") {
 
-				/*if (coll.gameObject.tag == "blood cell") ;
-              Destroy(this.gameObject);*/
+            float speed_this = GetComponent<Rigidbody2D>().velocity.magnitude;
 
-  }
+
+            float speed_coll = coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
+
+
+            if (speed_coll >= speed_this)
+            {
+                health -= 50;
+            }
+        }
+        /*switch(coll.gameObject.tag){
+            case "blood cell":
+                if(this.gameObject.tag == "virus"){
+                    health -= 5*(Vector2.Dot(this.gameObject.transform.up,coll.gameObject.transform.up)+1);
+                }
+                break;
+            case "virus":
+                if(this.gameObject.tag == "blood cell"){
+                    health -= 5*(Vector2.Dot(this.gameObject.transform.up,coll.gameObject.transform.up)+1);
+                }
+                break;
+        }*/
+
+        /*if (coll.gameObject.tag == "blood cell") ;
+      Destroy(this.gameObject);*/
+
+    }
 }
