@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/NEW AS OF FEB 9th.unity
+- path: Assets/Spawners.unity
   isLoaded: 1
   isActive: 1

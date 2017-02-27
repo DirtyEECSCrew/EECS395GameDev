@@ -19,7 +19,7 @@ public class Combat : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 
-        if(gameObject.tag != coll.gameObject.tag && coll.gameObject.tag != "wall") {
+        if(gameObject.tag != coll.gameObject.tag && coll.gameObject.tag != "wall" && coll.gameObject.tag != "Player1" && coll.gameObject.tag != "Player2" && coll.gameObject.tag != "ControlPoint") {
 
             float speed_this = GetComponent<Rigidbody2D>().velocity.magnitude;
 
