@@ -28,7 +28,6 @@ public class ControlAndSpawn : MonoBehaviour {
     //Update is called each frame
     internal void Update ()
     {
-        //GetComponent<SpriteRenderer>().color = new Color(163f, 49f, 49f, 50f);
 
             switch (controlled)
             {
@@ -68,6 +67,19 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
+            GetComponent<SpriteRenderer>().color = Color.black;
+            controlled = coll.gameObject.tag;
+        }
+
+        if (coll.gameObject.tag == "virus")
+        {
+            /*CaptureTimer -= Time.deltaTime;
+            if (CaptureTimer < 0)
+            {
+                GetComponent<SpriteRenderer>().color = new Color(.6f, .2f, .1f, 50f);
+                controlled = coll.gameObject.tag;
+
+            }*/
             GetComponent<SpriteRenderer>().color = new Color(.6f, .2f, .1f, 50f);
             controlled = coll.gameObject.tag;
         }
@@ -77,16 +89,16 @@ public class ControlAndSpawn : MonoBehaviour {
             CaptureTimer = Time.time + CaptureRate;
         }*/
 
-            /*if(coll.gameObject.tag != capturing)
-            {
-                contested = true;
-            }*/
+        /*if(coll.gameObject.tag != capturing)
+        {
+            contested = true;
+        }*/
 
-            /*if (contested)
-            {
-                ContestedTimer += Time.deltaTime;
-            }*/
-        }
+        /*if (contested)
+        {
+            ContestedTimer += Time.deltaTime;
+        }*/
+    }
         void OnCollisionExit2D(Collision2D coll)
     {
         CaptureTimer = CaptureRate;
