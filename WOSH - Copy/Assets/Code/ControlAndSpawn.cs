@@ -2,13 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class ControlAndSpawn : MonoBehaviour {
-
     public GameObject Player1;
-    public GameObject Player2;       //Public variable to store a reference to instantiating
+    public GameObject Player2;
+    public GameObject Antibody;
+    public GameObject Virus;       //Public variable to store a reference to instantiating
     public float SpawnRate;
     public string controlled;
     public float CaptureRate;
-
+    public int UnitCap;
     private string capturing;
     private bool contested;
     private float CaptureTimer;
@@ -22,36 +23,41 @@ public class ControlAndSpawn : MonoBehaviour {
         contested = false;
 
         CaptureTimer = CaptureRate;
-        
+
     }
 
     //Update is called each frame
     internal void Update ()
     {
-
             switch (controlled)
             {
                 case "blood cell":
-                    if (Timer < Time.time)
+                    var  units = Player1.GetComponent<Player>().units;
+                    if (Timer < Time.time && units < UnitCap)
                     {
-                        Instantiate(Player1, transform.position, Quaternion.identity);
+                        Instantiate(Antibody, transform.position, Quaternion.identity);
+                        Player1.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
                     }
 
                     break;
                 case "virus":
-                    if (Timer < Time.time)
+                    units = Player2.GetComponent<Player>().units;
+                    if (Timer < Time.time && units < UnitCap)
                     {
-                        Instantiate(Player2, transform.position, Quaternion.identity);
+                        Instantiate(Virus, transform.position, Quaternion.identity);
+                        Player2.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
                     }
                     break;
                 default:
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                    controlled = "None";
                     break;
             }
-        
 
-        
+
+
 
     }
 
@@ -67,7 +73,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
-            GetComponent<SpriteRenderer>().color = Color.black;
+            GetComponent<SpriteRenderer>().color = Color.red;
             controlled = coll.gameObject.tag;
         }
 
@@ -80,7 +86,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
-            GetComponent<SpriteRenderer>().color = new Color(.6f, .2f, .1f, 50f);
+            GetComponent<SpriteRenderer>().color = Color.green;
             controlled = coll.gameObject.tag;
         }
         /*if (capturing != "Player1" || capturing != "Player2")

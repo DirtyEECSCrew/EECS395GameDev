@@ -31,7 +31,14 @@ namespace Steer2D
         void Start()
         {
             AgentList.Add(this);
-            stored = MaxVelocity;
+            if (Input.GetAxis("Fire1") > 0.2f)
+            {
+                
+            }
+            else
+            {
+                stored = MaxVelocity;
+            }
         }
 
         void Update()

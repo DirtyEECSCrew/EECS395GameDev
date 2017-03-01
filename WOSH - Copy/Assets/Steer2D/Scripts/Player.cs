@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	public int playerNumber;
+	public int units;
 	// Use this for initialization
 	void Start () {
 

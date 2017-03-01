@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Bounds.cs" />
      <Compile Include="Assets\Code\CompleteCameraController1.cs" />
+     <Compile Include="Assets\Code\ControlAndSpawn.cs" />
      <Compile Include="Assets\Code\Enemy.cs" />
      <Compile Include="Assets\Code\EnemySpawner.cs" />
      <Compile Include="Assets\Code\test.cs" />
