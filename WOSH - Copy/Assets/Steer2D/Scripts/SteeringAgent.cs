@@ -58,25 +58,16 @@ namespace Steer2D
 
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle);
             }
+            
             if(gameObject.tag == "blood cell"){
-              if (Input.GetAxis("Fire1") > 0.2f)
-              {
-                  MaxVelocity = test.curr_speed;
-              }
-              else
-              {
-                  MaxVelocity = stored;
-              }
+                Sprinter temp = GameObject.Find("Player1").GetComponent<Sprinter>();
+                MaxVelocity = temp.getSpeed()*2f;
             }
             if(gameObject.tag == "virus"){
-              if(Input.GetAxis("Fire2") > 0.2f){
-                MaxVelocity = test.curr_speed;
-
-              }
-              else{
-                MaxVelocity = stored;
-              }
+                otherSprinter temp = GameObject.Find("Player2").GetComponent<otherSprinter>();
+                MaxVelocity = temp.getSpeed()*2f;
             }
+            
         }
 
         void OnDestroy()
