@@ -29,12 +29,16 @@ public class ControlAndSpawn : MonoBehaviour {
     //Update is called each frame
     internal void Update ()
     {
+            Debug.Log(controlled);
             switch (controlled)
             {
                 case "blood cell":
                     var  units = Player1.GetComponent<Player>().units;
+                    Debug.Log(units);
+                    Debug.Log(UnitCap);
                     if (Timer < Time.time && units < UnitCap)
                     {
+
                         Instantiate(Antibody, transform.position, Quaternion.identity);
                         Player1.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
@@ -45,6 +49,7 @@ public class ControlAndSpawn : MonoBehaviour {
                     units = Player2.GetComponent<Player>().units;
                     if (Timer < Time.time && units < UnitCap)
                     {
+                        Debug.Log("call me antigen");
                         Instantiate(Virus, transform.position, Quaternion.identity);
                         Player2.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
@@ -63,7 +68,7 @@ public class ControlAndSpawn : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        //Debug.Log("hi");
+        Debug.Log("hi");
         if (coll.gameObject.tag == "blood cell")
         {
             /*CaptureTimer -= Time.deltaTime;
@@ -73,6 +78,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
+            Debug.Log("blodd");
             GetComponent<SpriteRenderer>().color = Color.red;
             controlled = coll.gameObject.tag;
         }
@@ -86,6 +92,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
+            Debug.Log("viru");
             GetComponent<SpriteRenderer>().color = Color.green;
             controlled = coll.gameObject.tag;
         }
