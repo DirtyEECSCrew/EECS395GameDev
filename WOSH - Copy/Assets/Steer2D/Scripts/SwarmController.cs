@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Steer2d
-{
+
     public class SwarmController : MonoBehaviour
     {
         public float speed;
@@ -20,8 +19,8 @@ namespace Steer2d
         // Update is called once per frame
         void Update()
         {
-            var player = GetComponent<Player>().playerNumber;
-
+           var player = GetComponent<Player>().playerNumber;
+            /*
             if(gameObject.tag == "Player1"){
               if (Input.GetAxis("Fire1") > 0.2f)
               {
@@ -41,7 +40,7 @@ namespace Steer2d
               else{
                 speed = stored;
               }
-            }
+            }*/
             //Debug.Log(speed);
             switch(player){
               case 1:
@@ -80,4 +79,4 @@ namespace Steer2d
 
         }
     }
-}
+
