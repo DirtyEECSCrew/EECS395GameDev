@@ -39,11 +39,11 @@ public class otherSprinter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Fire1") > 0.2f)
+        if (Input.GetAxis("Fire2") > 0.2f)
         {
             SetRunning(true);
         }
-        if (Input.GetAxis("Fire1") < 0.2f)
+        if (Input.GetAxis("Fire2") < 0.2f)
         {
             SetRunning(false);
         }

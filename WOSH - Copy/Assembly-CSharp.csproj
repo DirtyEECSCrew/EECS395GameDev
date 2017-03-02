@@ -51,6 +51,8 @@
      <Compile Include="Assets\Code\ControlAndSpawn.cs" />
      <Compile Include="Assets\Code\Enemy.cs" />
      <Compile Include="Assets\Code\EnemySpawner.cs" />
+     <Compile Include="Assets\Code\Sprinter.cs" />
+     <Compile Include="Assets\Code\otherSprinter.cs" />
      <Compile Include="Assets\Code\test.cs" />
      <Compile Include="Assets\Combat.cs" />
      <Compile Include="Assets\Flocking\scripts\Flocking\Alignment.cs" />
