@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	public int playerNumber;
 	public int units;
+	public GameObject[] swarm;
 	// Use this for initialization
 	void Start () {
 
