@@ -45,10 +45,32 @@ namespace Steer2d
             //Debug.Log(speed);
             switch(player){
               case 1:
-                transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical") * speed * Time.deltaTime*-1);
+                if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f && Mathf.Abs(Input.GetAxis("Vertical"))>0.2f){
+                  transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical") * speed * Time.deltaTime*-1);
+                }
+                else if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.2f){
+                  transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal") * speed * Time.deltaTime, transform.position.y + 0 * speed * Time.deltaTime*-1);
+                }
+                else if(Mathf.Abs(Input.GetAxis("Vertical")) > 0.2f){
+                  transform.position = new Vector2(transform.position.x + 0 * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical") * speed * Time.deltaTime*-1);
+                }
+                else{
+                  transform.position = new Vector2(transform.position.x + 0 * speed * Time.deltaTime, transform.position.y + 0 * speed * Time.deltaTime*-1);
+                }
                 break;
               case 2:
-                transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal2") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical2") * speed * Time.deltaTime);
+                if(Mathf.Abs(Input.GetAxis("Horizontal2")) > 0.2f && Mathf.Abs(Input.GetAxis("Vertical2"))>0.2f){
+                  transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal2") * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical2") * speed * Time.deltaTime);
+                }
+                else if(Mathf.Abs(Input.GetAxis("Horizontal2")) > 0.2f){
+                  transform.position = new Vector2(transform.position.x + Input.GetAxis("Horizontal2") * speed * Time.deltaTime, transform.position.y + 0 * speed * Time.deltaTime*-1);
+                }
+                else if(Mathf.Abs(Input.GetAxis("Vertical2"))> 0.2f){
+                  transform.position = new Vector2(transform.position.x + 0 * speed * Time.deltaTime, transform.position.y + Input.GetAxis("Vertical2") * speed * Time.deltaTime);
+                }
+                else{
+                  transform.position = new Vector2(transform.position.x + 0 * speed * Time.deltaTime, transform.position.y + 0 * speed * Time.deltaTime*-1);
+                }
                 break;
             }
 
