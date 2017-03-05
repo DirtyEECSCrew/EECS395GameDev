@@ -95,6 +95,7 @@
 'Assets/Flocking/scripts/UiManager.cs'
 'Assets/Flocking/scripts/XmlScripts/XmlReadWrite.cs'
 'Assets/Flocking/scripts/exampleScene.cs'
+'Assets/Helper.cs'
 'Assets/Steer2D/Examples/Assets/Target.cs'
 'Assets/Steer2D/Scripts/Arrive.cs'
 'Assets/Steer2D/Scripts/Evade.cs'

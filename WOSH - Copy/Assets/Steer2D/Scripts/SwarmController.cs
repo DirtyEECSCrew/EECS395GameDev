@@ -78,5 +78,10 @@ using UnityEngine;
 
 
         }
+        void OnCollisionExit2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag=="Player1"){
+          Debug.Log("here1");
+        }
+      }
     }
-

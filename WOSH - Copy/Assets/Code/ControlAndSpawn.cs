@@ -34,7 +34,7 @@ public class ControlAndSpawn : MonoBehaviour {
             {
                 case "blood cell":
                     var  units = Player1.GetComponent<Player>().units;
-                    
+
                     if (Timer < Time.time && units < UnitCap)
                     {
 
@@ -48,7 +48,7 @@ public class ControlAndSpawn : MonoBehaviour {
                     units = Player2.GetComponent<Player>().units;
                     if (Timer < Time.time && units < UnitCap)
                     {
-                        
+
                         Instantiate(Virus, transform.position, Quaternion.identity);
                         Player2.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
@@ -67,7 +67,9 @@ public class ControlAndSpawn : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        
+      if(coll.gameObject.tag=="Player1"){
+        Debug.Log("here");
+      }
         if (coll.gameObject.tag == "blood cell")
         {
             /*CaptureTimer -= Time.deltaTime;
@@ -77,7 +79,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
-            
+
             GetComponent<SpriteRenderer>().color = Color.red;
             controlled = coll.gameObject.tag;
         }
@@ -91,7 +93,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
-            
+
             GetComponent<SpriteRenderer>().color = Color.green;
             controlled = coll.gameObject.tag;
         }
@@ -113,7 +115,9 @@ public class ControlAndSpawn : MonoBehaviour {
     }
         void OnCollisionExit2D(Collision2D coll)
     {
+
         CaptureTimer = CaptureRate;
         //if (coll.gameObject.tag == capturing)
     }
+    
 }
