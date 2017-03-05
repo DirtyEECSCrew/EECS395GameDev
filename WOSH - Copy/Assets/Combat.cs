@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Steer2D;
 
 public class Combat : MonoBehaviour {
 	public float health;
@@ -18,10 +19,23 @@ public class Combat : MonoBehaviour {
 		if(health < 0.0){
 			if(this.gameObject.tag == "virus"){
 				Player2.GetComponent<Player>().units -= 1;
+				if(GetComponent<Seek2>().guarding){
+					 GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
+				}
+				else{
+					Player2.GetComponent<Player>().swarm.Remove(gameObject);
+				}
 			}
-			if(this.gameObject.tag == "blood cell"){
+			else if(this.gameObject.tag == "blood cell"){
 				Player1.GetComponent<Player>().units -= 1;
+				if(GetComponent<Seek2>().guarding){
+					 GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
+				}
+				else{
+					Player1.GetComponent<Player>().swarm.Remove(gameObject);
+				}
 			}
+
 			Destroy(this.gameObject);
 		}
 	}
