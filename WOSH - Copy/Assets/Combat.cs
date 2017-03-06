@@ -21,38 +21,49 @@ public class Combat : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(health < 0.0){
-			if(this.gameObject.tag == "virus"){
-				Player2.GetComponent<Player>().units -= 1;
-				if(GetComponent<Seek2>().guarding){
-					 GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
-				}
-				else{
-					Player2.GetComponent<Player>().swarm.Remove(gameObject);
-				}
-			}
-			else if(this.gameObject.tag == "blood cell"){
-				Player1.GetComponent<Player>().units -= 1;
-				if(GetComponent<Seek2>().guarding){
-					 GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
-				}
-			else if (this.gameObject.tag == "innerheart"){
-				//Player2 wins
-				//!!!!!!!!!!!!!!!!!!!!!!!
-				//!!!!!!!!!!!!!!!!!!!!!!!
-				//ERIC END THE GAME HERE
-				//!!!!!!!!!!!!!!!!!!!!!!!
-				//!!!!!!!!!!!!!!!!!!!!!!!
-			}
-				else{
-					Player1.GetComponent<Player>().swarm.Remove(gameObject);
-				}
-			}
+		if(health < 0.0f){
+            if (this.gameObject.tag == "virus")
+            {
+                Player2.GetComponent<Player>().units -= 1;
+                if (GetComponent<Seek2>().guarding)
+                {
+                    GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
+                }
+                else
+                {
+                    Player2.GetComponent<Player>().swarm.Remove(gameObject);
+                }
+            }
+            else if (this.gameObject.tag == "blood cell")
+            {
+                Player1.GetComponent<Player>().units -= 1;
+                if (GetComponent<Seek2>().guarding)
+                {
+                    GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
+                }
+            }
+            else if (this.gameObject.tag == "innerheart")
+            {
+                //Player2 wins
+                //!!!!!!!!!!!!!!!!!!!!!!!
+                //!!!!!!!!!!!!!!!!!!!!!!!
+                //ERIC END THE GAME HERE
+                //!!!!!!!!!!!!!!!!!!!!!!!
+                //!!!!!!!!!!!!!!!!!!!!!!!
+                //Debug.Log("p2win");
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GameOver("Player2");
+            }
+            else
+            {
+                Player1.GetComponent<Player>().swarm.Remove(gameObject);
+            }
+			
 			if(this.gameObject.tag != "innerheart"){
 				Destroy(this.gameObject);
 			}
 
 		}
+        
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 
@@ -121,7 +132,7 @@ public class Combat : MonoBehaviour {
 									else{
 										coll.gameObject.GetComponent<Combat>().green = 1f;
 									}
-									Debug.Log(coll.gameObject.GetComponent<SpriteRenderer>().color);
+									//Debug.Log(coll.gameObject.GetComponent<SpriteRenderer>().color);
 									coll.gameObject.GetComponent<SpriteRenderer>().color = new Color(coll.gameObject.GetComponent<Combat>().red, coll.gameObject.GetComponent<Combat>().green, 0f, 1f);
 								}
 								break;

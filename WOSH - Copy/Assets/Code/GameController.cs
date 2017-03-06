@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
         count = (int)timer;
         if (timer <= 0)
         {
-            GameOver();
+            GameOver("Player1");
         }
         UpdateText();
     }
@@ -79,10 +79,11 @@ public class GameController : MonoBehaviour
         timerText.text = "" + count;
     }
 
-    public void GameOver()
+    public void GameOver(string winner)
     {
+        //Debug.Log("hi");
         Time.timeScale = 0f;
-        gameOverText.text = "Game Over!";
+        gameOverText.text = "Game Over!\n" + winner + " wins!" ;
         gameOver = true;
     }
 }
