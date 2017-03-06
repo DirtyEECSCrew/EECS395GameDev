@@ -107,7 +107,7 @@ public class Combat : MonoBehaviour {
                 }
                 break;
 							case "innerheart":
-								if (this.gameObject.tag == "blood cell"){
+								if (this.gameObject.tag == "virus"){
 									coll.gameObject.GetComponent<Combat>().health -= 5;
 									if (coll.gameObject.GetComponent<Combat>().red - 0.005f > 0f){
 										coll.gameObject.GetComponent<Combat>().red = coll.gameObject.GetComponent<Combat>().red -0.005f;
