@@ -49,7 +49,7 @@ public class ControlAndSpawn : MonoBehaviour {
                         }
                       }
                       if (Input.GetKeyDown("joystick 1 button 17")){
-                        
+
                         if(guard.Count > 0){
                           var temp = guard[0];
                           guard.RemoveAt(0);
@@ -78,6 +78,7 @@ public class ControlAndSpawn : MonoBehaviour {
                           var temp = Player2.GetComponent<Player>().swarm[0];
                           Player2.GetComponent<Player>().swarm.RemoveAt(0);
                           temp.GetComponent<Seek2>().guarding = true;
+                          temp.GetComponent<Seek2>().controlpoint = gameObject;
                           temp.GetComponent<Seek2>().TargetPoint = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
                           guard.Add(temp);
                         }
@@ -96,7 +97,7 @@ public class ControlAndSpawn : MonoBehaviour {
                     if (Timer < Time.time && units < UnitCap)
                     {
 
-                        Instantiate(Virus, transform.position, Quaternion.identity);
+                        Player2.GetComponent<Player>().swarm.Add(Instantiate(Virus, transform.position, Quaternion.identity));
                         Player2.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
                     }
@@ -141,7 +142,7 @@ public class ControlAndSpawn : MonoBehaviour {
                 controlled = coll.gameObject.tag;
 
             }*/
-            if(guard.Count == 1){
+            if(guard.Count == 0){
               GetComponent<SpriteRenderer>().color = Color.green;
               controlled = coll.gameObject.tag;
             }
