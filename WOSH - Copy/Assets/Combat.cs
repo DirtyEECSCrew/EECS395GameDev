@@ -7,10 +7,15 @@ public class Combat : MonoBehaviour {
 	public float health;
 	public GameObject Player1;
 	public GameObject Player2;
+	public float red;
+	public float green;
 
 	// Use this for initialization
 
 	void Start () {
+		if(this.gameObject.tag == "innerheart"){
+			GetComponent<SpriteRenderer>().color = new Color(1f,0f,0f,1f);
+		}
 
 	}
 
@@ -31,12 +36,22 @@ public class Combat : MonoBehaviour {
 				if(GetComponent<Seek2>().guarding){
 					 GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
 				}
+			else if (this.gameObject.tag == "innerheart"){
+				//Player2 wins
+				//!!!!!!!!!!!!!!!!!!!!!!!
+				//!!!!!!!!!!!!!!!!!!!!!!!
+				//ERIC END THE GAME HERE
+				//!!!!!!!!!!!!!!!!!!!!!!!
+				//!!!!!!!!!!!!!!!!!!!!!!!
+			}
 				else{
 					Player1.GetComponent<Player>().swarm.Remove(gameObject);
 				}
 			}
+			if(this.gameObject.tag != "innerheart"){
+				Destroy(this.gameObject);
+			}
 
-			Destroy(this.gameObject);
 		}
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -91,6 +106,25 @@ public class Combat : MonoBehaviour {
 									health -= damage;
                 }
                 break;
+							case "innerheart":
+								if (this.gameObject.tag == "blood cell"){
+									coll.gameObject.GetComponent<Combat>().health -= 5;
+									if (coll.gameObject.GetComponent<Combat>().red - 0.005f > 0f){
+										coll.gameObject.GetComponent<Combat>().red = coll.gameObject.GetComponent<Combat>().red -0.005f;
+									}
+									else{
+										coll.gameObject.GetComponent<Combat>().red = 0f;
+									}
+									if (coll.gameObject.GetComponent<Combat>().green + 0.005f < 1f){
+										coll.gameObject.GetComponent<Combat>().green = coll.gameObject.GetComponent<Combat>().green + 0.005f;
+									}
+									else{
+										coll.gameObject.GetComponent<Combat>().green = 1f;
+									}
+									Debug.Log(coll.gameObject.GetComponent<SpriteRenderer>().color);
+									coll.gameObject.GetComponent<SpriteRenderer>().color = new Color(coll.gameObject.GetComponent<Combat>().red, coll.gameObject.GetComponent<Combat>().green, 0f, 1f);
+								}
+								break;
         }
 
         /*if (coll.gameObject.tag == "blood cell") ;
