@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
 
-    public GUIText timerText;
+    public Text timerText;
     //public GUIText livesText;
-    public GUIText gameOverText;
-    public GUIText restartText;
+    public Text gameOverText;
+    public Text restartText;
     public float count;
     private float timer;
     private bool gameOver;
-    
 
-    
+
+
 
     void Start()
     {
@@ -75,7 +76,7 @@ public class GameController : MonoBehaviour
 
     void UpdateText()
     {
-        timerText.text = "Time: " + count;
+        timerText.text = "" + count;
     }
 
     public void GameOver()
