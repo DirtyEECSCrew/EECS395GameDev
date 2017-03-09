@@ -9,13 +9,16 @@ public class Combat : MonoBehaviour {
 	public GameObject Player2;
 	public float red;
 	public float green;
+	private float totalHealth;
 
 	// Use this for initialization
 
 	void Start () {
 		if(this.gameObject.tag == "innerheart"){
 			GetComponent<SpriteRenderer>().color = new Color(1f,0f,0f,1f);
+
 		}
+		totalHealth = health;
 
 	}
 
@@ -30,7 +33,7 @@ public class Combat : MonoBehaviour {
                     GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
                 }
                 else
-                {
+                {	
                     Player2.GetComponent<Player>().swarm.Remove(gameObject);
                 }
             }
@@ -40,6 +43,10 @@ public class Combat : MonoBehaviour {
                 if (GetComponent<Seek2>().guarding)
                 {
                     GetComponent<Seek2>().controlpoint.GetComponent<ControlAndSpawn>().guard.Remove(gameObject);
+                }
+								else
+                {
+                    Player1.GetComponent<Player>().swarm.Remove(gameObject);
                 }
             }
             else if (this.gameObject.tag == "innerheart")
@@ -57,13 +64,13 @@ public class Combat : MonoBehaviour {
             {
                 Player1.GetComponent<Player>().swarm.Remove(gameObject);
             }
-			
+
 			if(this.gameObject.tag != "innerheart"){
 				Destroy(this.gameObject);
 			}
 
 		}
-        
+
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 
@@ -120,20 +127,25 @@ public class Combat : MonoBehaviour {
 							case "innerheart":
 								if (this.gameObject.tag == "virus"){
 									coll.gameObject.GetComponent<Combat>().health -= 5;
-									if (coll.gameObject.GetComponent<Combat>().red - 0.005f > 0f){
-										coll.gameObject.GetComponent<Combat>().red = coll.gameObject.GetComponent<Combat>().red -0.005f;
+									float tempHealth = coll.gameObject.GetComponent<Combat>().health;
+									float myTotal = coll.gameObject.GetComponent<Combat>().totalHealth;
+									/*totalHealth =
+									if (coll.gameObject.GetComponent<Combat>().red - 0.0005f > 0f){
+										coll.gameObject.GetComponent<Combat>().red = coll.gameObject.GetComponent<Combat>().red -0.0005f;
 									}
 									else{
 										coll.gameObject.GetComponent<Combat>().red = 0f;
 									}
-									if (coll.gameObject.GetComponent<Combat>().green + 0.005f < 1f){
-										coll.gameObject.GetComponent<Combat>().green = coll.gameObject.GetComponent<Combat>().green + 0.005f;
+									if (coll.gameObject.GetComponent<Combat>().green + 0.0005f < 1f){
+										coll.gameObject.GetComponent<Combat>().green = coll.gameObject.GetComponent<Combat>().green + 0.0005f;
 									}
 									else{
 										coll.gameObject.GetComponent<Combat>().green = 1f;
 									}
-									//Debug.Log(coll.gameObject.GetComponent<SpriteRenderer>().color);
-									coll.gameObject.GetComponent<SpriteRenderer>().color = new Color(coll.gameObject.GetComponent<Combat>().red, coll.gameObject.GetComponent<Combat>().green, 0f, 1f);
+									//Debug.Log(coll.gameObject.GetComponent<SpriteRenderer>().color);*/
+									//Debug.Log(tempHealth);
+									//Debug.Log(myTotal);
+									coll.gameObject.GetComponent<SpriteRenderer>().color = new Color(tempHealth/myTotal,(myTotal-tempHealth)/myTotal,0f,1f);//coll.gameObject.GetComponent<Combat>().red, coll.gameObject.GetComponent<Combat>().green, 0f, 1f);
 								}
 								break;
         }

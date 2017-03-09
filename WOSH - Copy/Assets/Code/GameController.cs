@@ -10,9 +10,14 @@ public class GameController : MonoBehaviour
     //public GUIText livesText;
     public Text gameOverText;
     public Text restartText;
+    public Text attack;
+    public Text defend;
     public float count;
     private float timer;
     private bool gameOver;
+    private float tracker;
+
+
 
 
 
@@ -23,6 +28,7 @@ public class GameController : MonoBehaviour
         timer = (float)count;
         UpdateTimer();
         //UpdateLives();
+        tracker = count;
 
 
     }
@@ -40,6 +46,11 @@ public class GameController : MonoBehaviour
             }
         }
         else UpdateTimer();
+
+        if (count< tracker-3){
+          attack.text = "";
+          defend.text = "";
+        }
     }
     public bool gamestate()
     {

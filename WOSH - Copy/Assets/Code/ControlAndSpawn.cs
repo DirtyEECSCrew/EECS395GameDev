@@ -33,7 +33,13 @@ public class ControlAndSpawn : MonoBehaviour {
     //Update is called each frame
     internal void Update ()
     {
+    /*  foreach (GameObject g in guard){
+        if (Vector2.Distance(g.transform.position, transform.position) > 10f){
 
+          guard.Remove(g);
+          Destroy(g);
+        }
+      }*/
             switch (controlled)
             {
                 case "blood cell":
@@ -64,8 +70,10 @@ public class ControlAndSpawn : MonoBehaviour {
 
                     if (Timer < Time.time && units < UnitCap)
                     {
-
-                        Player1.GetComponent<Player>().swarm.Add(Instantiate(Antibody, transform.position, Quaternion.identity));
+                        GameObject newAntibody = Instantiate(Antibody, transform.position, Quaternion.identity);
+                        newAntibody.GetComponent<Combat>().Player1 = Player1;
+                        newAntibody.GetComponent<Combat>().Player2 = Player2;
+                        Player1.GetComponent<Player>().swarm.Add(newAntibody);
                         Player1.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
                     }
@@ -96,8 +104,10 @@ public class ControlAndSpawn : MonoBehaviour {
                     units = Player2.GetComponent<Player>().units;
                     if (Timer < Time.time && units < UnitCap)
                     {
-
-                        Player2.GetComponent<Player>().swarm.Add(Instantiate(Virus, transform.position, Quaternion.identity));
+                        GameObject newVirus = Instantiate(Virus, transform.position, Quaternion.identity);
+                        newVirus.GetComponent<Combat>().Player1 = Player1;
+                        newVirus.GetComponent<Combat>().Player2 = Player2;
+                        Player2.GetComponent<Player>().swarm.Add(newVirus);
                         Player2.GetComponent<Player>().units += 1;
                         Timer = Time.time + SpawnRate;
                     }
